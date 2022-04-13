@@ -19,16 +19,17 @@ int get_day_of_month(int year, int month) {
 //1일의 요일 구하기
 int get_day(int year, int month) {
 	int past = 0;
-	for(int i =1; i<year; i++) {
+	for(int i =1900; i<year; i++) {
 		past = past + 365 + checkMonth(i);
 	}
 	for(int j=1; j<month; j++) {
 		past = past + get_day_of_month(year,j);
 	}
-	return (1+past) %7;  //1:월요일, 2:화요일........6:토요일, 7:일요일 
+	return (past+1) %7;  //1:월요일, 2:화요일........6:토요일, 7:일요일 
 } 
 
 void printCal (int startDay, int endDay) {
+//	printf("%d",startDay);
 	printf(" 일 월 화 수 목 금 토 \n");
 	for(int i=0; i<startDay; i++) {
 		printf("   ");
